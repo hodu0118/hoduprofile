@@ -220,14 +220,25 @@
 <script>
   // GitHub Pages용 무료 방문자 카운터 (abacus.jasoncameron.dev).
   // namespace/key는 사이트별로 고유하게 지정 - 필요하면 값을 바꾸면 새 카운트가 시작됩니다.
+  // 같은 브라우저에서 하루에 한 번만 카운트를 올리고, 그 안에서 새로고침하면
+  // 숫자만 다시 조회(hit 아님)해서 보여줍니다 - 새로고침 스팸 방지용.
   (function () {
     const el = document.getElementById('view-count');
     const namespace = 'hodu-lucky-duck-profile';
     const key = 'home';
-    fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${key}`)
+    const storageKey = 'hodu_last_view_date';
+    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const lastVisit = localStorage.getItem(storageKey);
+    const alreadyCountedToday = lastVisit === today;
+    const endpoint = alreadyCountedToday ? 'get' : 'hit';
+
+    fetch(`https://abacus.jasoncameron.dev/${endpoint}/${namespace}/${key}`)
       .then((res) => res.json())
       .then((data) => {
         el.textContent = data.value;
+        if (!alreadyCountedToday) {
+          localStorage.setItem(storageKey, today);
+        }
       })
       .catch(() => {
         el.textContent = '-';
