@@ -63,6 +63,28 @@
     animation: rise 0.6s cubic-bezier(.2,.8,.2,1) both;
   }
 
+  .admin-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(74, 51, 27, 0.75);
+    background: rgba(255, 255, 255, 0.45);
+    padding: 5px 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .admin-badge:hover,
+  .admin-badge:focus-visible {
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--ink);
+    outline: none;
+  }
+
   @keyframes rise {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
@@ -188,6 +210,7 @@
 <body>
 
   <div class="card">
+    <a class="admin-badge" href="admin.html">🔒 관리자 전용</a>
     <div class="avatar-wrap">
       <img src="Avatar.png" alt="hodu / lucky_duck 프로필 사진">
     </div>
@@ -224,8 +247,8 @@
   // 숫자만 다시 조회(hit 아님)해서 보여줍니다 - 새로고침 스팸 방지용.
   (function () {
     const el = document.getElementById('view-count');
-    const namespace = 'hodu-lucky-duck-profile';
-    const key = 'home';
+    const namespace = 'hodu-lucky-duck';
+    const key = 'views';
     const storageKey = 'hodu_last_view_date';
     const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
     const lastVisit = localStorage.getItem(storageKey);
