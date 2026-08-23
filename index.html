@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hodu / lucky_duck</title>
+<title>호두</title>
 <link rel="icon" href="Avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #FFF6E4;
-    --stripe: #FFE7B0;
-    --card-top: #FFD466;
-    --card-bottom: #F2A93C;
-    --ink: #4A331B;
-    --ink-soft: #7A5C36;
-    --scarf-red: #E24B4B;
-    --scarf-green: #4E9B4B;
-    --glow: rgba(255, 196, 90, 0.55);
+    --cream: #FFF3EC;
+    --stripe: #FFE0DA;
+    --card-top: #FFD9C2;
+    --card-bottom: #F6A9A0;
+    --ink: #4A2E22;
+    --ink-soft: #7A5748;
+    --ear-pink: #F98CA0;
+    --ear-pink-deep: #E5657E;
+    --glow: rgba(249, 140, 160, 0.5);
     --card-radius: 28px;
   }
 
@@ -189,16 +189,28 @@
     fill: rgba(74, 51, 27, 0.7);
   }
 
-  .scarf {
-    width: 26px;
-    height: 10px;
-    border-radius: 6px;
-    background: repeating-linear-gradient(
-      -45deg,
-      var(--scarf-red) 0px, var(--scarf-red) 5px,
-      var(--scarf-green) 5px, var(--scarf-green) 10px
-    );
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  .paw {
+    width: 24px;
+    height: 20px;
+    position: relative;
+    opacity: 0.85;
+  }
+  .paw::before {
+    content: "";
+    position: absolute;
+    left: 4px; bottom: 0;
+    width: 16px; height: 12px;
+    border-radius: 50% 50% 45% 45%;
+    background: var(--ear-pink-deep);
+  }
+  .paw::after {
+    content: "";
+    position: absolute;
+    left: 2px; top: 0;
+    width: 4px; height: 6px;
+    border-radius: 50%;
+    background: var(--ear-pink-deep);
+    box-shadow: 6px 1px 0 var(--ear-pink-deep), 12px 0px 0 var(--ear-pink-deep), 18px 1px 0 var(--ear-pink-deep);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -212,12 +224,12 @@
   <div class="card">
     <a class="admin-badge" href="admin.html">🔒 관리자 전용</a>
     <div class="avatar-wrap">
-      <img src="Avatar.png" alt="hodu / lucky_duck 프로필 사진">
+      <img src="Avatar.png" alt="호두 프로필 사진">
     </div>
 
-    <h1 class="name">hodu<span class="slash">/</span>lucky_duck</h1>
+    <h1 class="name">호두</h1>
 
-    <p class="bio">안녕하세요? 저는 호두 / 러키덕이에요! 여러분들과 친하게 지내고 싶어요!</p>
+    <p class="bio">안녕하세요? 저는 호두예요! 여러분들과 친하게 지내고 싶어요!</p>
 
     <div class="socials">
       <a class="social-btn" href="https://open.spotify.com/user/31n6kulmf4cd6jppksval2tfkqgu?si=41c6d572f81b485b" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
@@ -236,7 +248,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 11.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 0 9zm0-7.2a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4z"/></svg>
         <span id="view-count">···</span>
       </div>
-      <div class="scarf" aria-hidden="true"></div>
+      <div class="paw" aria-hidden="true"></div>
     </div>
   </div>
 
